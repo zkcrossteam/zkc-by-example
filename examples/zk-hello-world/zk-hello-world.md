@@ -1,17 +1,22 @@
-import {
-  withZKCWeb3MetaMaskProvider,
-  ZKCWasmServiceHelper,
-  ZKCWasmServiceUtil,
-} from 'zkc-sdk';
+# ZK Hello World!
 
+## Overview
+
+This is a tutorial for initializing an instance of the WebAssembly module and calling the functions within it.
+
+### Implementation
+
+1.  Import ZKC-SDK and `hello-world.wasm` in `index.js`
+
+```javascript
 import { WasmSDK } from '../../initWasm/wasmSDK';
-import ZKHelloWorldExample from './demo/c/zk-hello-world.wasm';
+import helloWorldExample from './zk-hello-world.wasm';
+```
 
-const TUTORIAL_MD5 = '665272C6FD6E4148784BF1BD2905301F';
+2.  Load wasm module instance and call the getLucky function export from wasm module
 
-const luckyNumberNode = document.querySelector("#lucky-number"),
-  proofMessageNode = document.querySelector('#proof-message')
-
+```javascript
+// get random number
 async function getRandomNumber() {
   const randomNumber = Math.ceil(Math.random() * 10);
 
@@ -20,12 +25,18 @@ async function getRandomNumber() {
   // load wasm module instance
   const { exports } = await WasmSDK.connect(ZKHelloWorldExample);
 
-  // Call the checkLucky function export from wasm, save the result
+  // Call the checkLucky function export from wasm, check the number
   const isLucky = exports.checkLucky(randomNumber);
 
-  return isLucky ? alert('Congratulations! Please submit your proof on-chain!') : alert('Not Lucky, pleasy try again')
+  return isLucky
+    ? alert('Congratulations! Please submit your proof on-chain!')
+    : alert('Not Lucky, pleasy try again');
 }
+```
 
+3. Submit proof
+
+```javascript
 async function submitProof() {
   withZKCWeb3MetaMaskProvider(async provider => {
     // Whether the wallet has been connected
@@ -33,7 +44,7 @@ async function submitProof() {
 
     const luckyNumberValue = +luckyNumberNode.textContent || 0;
 
-    if (luckyNumberValue === 0) return alert('Get your lucky number first!')
+    if (luckyNumberValue === 0) return alert('Get your lucky number first!');
 
     // Signed information
     const info = {
@@ -68,3 +79,32 @@ async function submitProof() {
     proofMessageNode.textContent = `Hello World! ZK Proof: ${response}`;
   });
 }
+```
+
+4. Load `index.js` file in `index.html`:
+
+```html
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ZK Hello World - AssemblyScript</title>
+    <link rel="preload" href="./index.js" as="script" />
+  </head>
+
+  <body>
+    <script type="module" src="./index.js"></script>
+    <button id="get-lucky" onclick="getRandomNumber()">get lucky!</button>
+    <p>
+      lucky number:
+      <span id="lucky-number"></span>
+    </p>
+    <button id="submit-proof" onclick="submitProof()">
+      Submit your proof!
+    </button>
+    <p id="proof-message"></p>
+  </body>
+</html>
+```
+
+## Demo
