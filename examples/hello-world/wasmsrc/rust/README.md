@@ -24,12 +24,6 @@ Get [`wasm-pack`][2] here!
 
 > If you are a Microsoft Windows 10 user, it is highly recommended to install [WSL2][3], everything will be much smoother!
 
-#### [ZKC-SDK][4]
-
-```shell
-npm install zkc-sdk
-```
-
 ### Implementation
 
 1.  Initialize the project:

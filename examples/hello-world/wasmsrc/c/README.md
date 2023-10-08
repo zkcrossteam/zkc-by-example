@@ -19,12 +19,6 @@ winget install -e --id LLVM.LLVM
 
 > Please make sure that the system environment variables have been added successfully
 
-#### [ZKC-SDK][2]
-
-```shell
-npm install zkc-sdk
-```
-
 ### Implementation
 
 1.  Create a file called `hello-world.c` :
@@ -43,4 +37,3 @@ clang --target=wasm32 --no-standard-libraries -Wl,--export-all -Wl,--no-entry -o
 ```
 
 [1]: https://llvm.org/
-[2]: https://github.com/zkcrossteam/ZKC-SDK

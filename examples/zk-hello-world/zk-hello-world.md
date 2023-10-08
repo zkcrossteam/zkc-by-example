@@ -4,6 +4,16 @@
 
 This is a tutorial for initializing an instance of the WebAssembly module and calling the functions within it.
 
+## Setup
+
+### Prerequisite
+
+- [ZKC-SDK][2], which can be installed by executing:
+
+```shell
+npm install zkc-sdk
+```
+
 ### Implementation
 
 1.  Import ZKC-SDK and `hello-world.wasm` in `index.js`
@@ -108,3 +118,6 @@ async function submitProof() {
 ```
 
 ## Demo
+
+[1]: https://www.assemblyscript.org/compiler.html#using-the-compiler
+[2]: https://github.com/zkcrossteam/ZKC-SDK

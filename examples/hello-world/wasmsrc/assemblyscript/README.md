@@ -14,12 +14,6 @@ This is a tutorial for compiling an Assemblyscript file into an WebAssembly modu
 npm install -g assemblyscript
 ```
 
-- [ZKC-SDK][2], which can be installed by executing:
-
-```shell
-npm install zkc-sdk
-```
-
 ### Implementation
 
 1.  Create `hello-world.ts` AssemblyScript file:
@@ -42,4 +36,3 @@ asc hello-world.ts -o hello-world.wasm
 ```
 
 [1]: https://www.assemblyscript.org/compiler.html#using-the-compiler
-[2]: https://github.com/zkcrossteam/ZKC-SDK

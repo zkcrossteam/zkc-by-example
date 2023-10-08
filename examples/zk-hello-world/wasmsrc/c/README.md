@@ -19,12 +19,6 @@ winget install -e --id LLVM.LLVM
 
 > Please make sure that the system environment variables have been added successfully
 
-#### [ZKC-SDK][2]
-
-```shell
-npm install zkc-sdk
-```
-
 #### Add zkWasm-C
 
 First, you need to add the C SDK repository to the project, either directly in the project root folder by cloning it, or you can add the SDK repository as a Git submodule to the project.
