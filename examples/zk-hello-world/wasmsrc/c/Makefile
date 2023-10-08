@@ -8,12 +8,12 @@ CLANG=clang
 endif
 FLAGS = -flto -O3 -nostdlib -fno-builtin -ffreestanding -mexec-model=reactor --target=wasm32 -Wl,--strip-all -Wl,--initial-memory=131072 -Wl,--max-memory=131072 -Wl,--no-entry -Wl,--allow-undefined -Wl,--export-dynamic
 
-all: dice-game.wasm
+all: zk-hello-world.wasm
 
 sdk.wasm:
 	sh $(SDKDIR)/sdk/scripts/build.sh sdk.wasm
 
-dice-game.wasm: $(CFILES) sdk.wasm
+zk-hello-world.wasm: $(CFILES) sdk.wasm
 	$(CLANG) -o $@ $(CFILES) sdk.wasm $(FLAGS) $(CFLAGS)
 
 clean:

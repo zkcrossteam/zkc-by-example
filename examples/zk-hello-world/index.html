@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ZK Hello World - AssemblyScript</title>
+    <link rel="preload" href="./index.js" as="script" />
+  </head>
+
+  <body>
+    <button id="get-lucky" onclick="getRandomNumber()">get lucky!</button>
+    <p>
+      lucky number:
+      <span id="lucky-number"></span>
+    </p>
+    <button id="submit-proof" onclick="submitProof()">
+      Submit your proof!
+    </button>
+    <p id="proof-message"></p>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
