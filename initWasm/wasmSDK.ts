@@ -1,10 +1,10 @@
-const { Memory, Table } = WebAssembly;
+export const { Memory, Table } = WebAssembly;
 
 export type InitWasm = (
   importObject: WebAssembly.Imports,
 ) => Promise<WebAssembly.WebAssemblyInstantiatedSource>;
 
-export const DEFAULT_OPTIONS: WebAssembly.Imports = {
+export const DEFAULT_IMPORT = {
   global: {},
   env: {
     memory: new Memory({ initial: 10, maximum: 100 }),
@@ -13,27 +13,42 @@ export const DEFAULT_OPTIONS: WebAssembly.Imports = {
       console.error('abort in wasm!');
       throw new Error('Unsupported wasm api: abort');
     },
+    require: (b: any) => {
+      if (!b) {
+        console.error('require failed');
+        throw new Error('Require failed');
+      }
+    },
+    wasm_input: () => {
+      console.error('wasm_input should not been called in non-zkwasm mode');
+      throw new Error('Unsupported wasm api: wasm_input');
+    },
+    checkLucky: a => {
+      console.error('check lucky funtion error');
+      throw new Error('check lucky function required');
+    },
   },
 };
 
 export class WasmSDK<T> {
   constructor(
     public exports: T,
-    public options = DEFAULT_OPTIONS,
+    public importObject = DEFAULT_IMPORT,
   ) {}
 
   static async connect<T>(
     wasmFileOrInitWasm: URL | InitWasm,
-    options = DEFAULT_OPTIONS,
+    importObject = DEFAULT_IMPORT,
   ) {
     const { instance } =
-      wasmFileOrInitWasm instanceof URL
+      wasmFileOrInitWasm instanceof URL ||
+      typeof wasmFileOrInitWasm === 'string'
         ? await WebAssembly.instantiateStreaming(
             fetch(wasmFileOrInitWasm),
-            options,
+            importObject,
           )
-        : await wasmFileOrInitWasm(options);
+        : await wasmFileOrInitWasm(importObject);
 
-    return new WasmSDK<T>(instance.exports as T, options);
+    return new WasmSDK<T>(instance.exports as T, importObject);
   }
 }
