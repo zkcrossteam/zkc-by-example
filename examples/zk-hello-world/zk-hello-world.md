@@ -8,22 +8,41 @@ This is a tutorial for initializing an instance of the WebAssembly module and ca
 
 ### Prerequisite
 
-- [ZKC-SDK][2], which can be installed by executing:
+- [ZKC-SDK][1], which can be installed by executing:
 
 ```shell
 npm install zkc-sdk
 ```
 
-### Implementation
+- [Parcel][2], or other build tool for web
 
-1.  Import ZKC-SDK and `hello-world.wasm` in `index.js`
-
-```javascript
-import { WasmSDK } from '../../initWasm/wasmSDK';
-import helloWorldExample from './zk-hello-world.wasm';
+```shell
+npm install parcel
 ```
 
-2.  Load wasm module instance and call the getLucky function export from wasm module
+### Implementation
+
+1.  Create application through [ZKC-DeveloperCenter][3]
+
+    > This is not a required step, you can use the application image id below to complete the proof.
+
+```javascript
+// Application image id that has been created and can be used for task proofing, of course, you can upload the wasm application yourself to get the application id (which will cost some ETH)
+const ZK_HELLO_WORLD_MD5 = "4470FD5212FCDCAA5B50F3DC538FCDAE";
+```
+
+2.  Import ZKC-SDK and `hello-world.wasm` in `index.js`
+
+```javascript
+import { WasmSDK } from "../../initWasm/wasmSDK";
+
+const zkHelloWorldURL = new URL(
+  "./wasmsrc/c/zk-hello-world.wasm",
+  import.meta.url
+);
+```
+
+3.  Load wasm module instance and call the getLucky function export from wasm module
 
 ```javascript
 // get random number
@@ -39,85 +58,107 @@ async function getRandomNumber() {
   const isLucky = exports.checkLucky(randomNumber);
 
   return isLucky
-    ? alert('Congratulations! Please submit your proof on-chain!')
-    : alert('Not Lucky, pleasy try again');
+    ? alert("Congratulations! Please submit your proof on-chain!")
+    : alert("Not Lucky, pleasy try again");
 }
 ```
 
-3. Submit proof
+4.  Submit proof
 
 ```javascript
 async function submitProof() {
-  withZKCWeb3MetaMaskProvider(async provider => {
+  withZKCWeb3MetaMaskProvider(async (provider) => {
+    const userAddress = await provider.connect();
     // Whether the wallet has been connected
-    if (!userAddress) return alert('Please connect your wallet.');
+    if (!userAddress) return alert("Please connect your wallet.");
 
     const luckyNumberValue = +luckyNumberNode.textContent || 0;
 
-    if (luckyNumberValue === 0) return alert('Get your lucky number first!');
+    if (luckyNumberValue === 0) return alert("Get your lucky number first!");
 
-    // Signed information
+    // Information to be signed
     const info = {
       user_address: userAddress.toLowerCase(),
-      md5: TUTORIAL_MD5,
-      private_inputs: luckyNumberValue,
+      md5: "your application id from step2",
+      public_inputs: [],
+      private_inputs: [`0x${luckyNumberValue.toString(16)}:i64`],
     };
 
-    // Signed string
+    // JSON.stringify
     const msgHexString = ZKCWasmServiceUtil.createProvingSignMessage(info);
 
-    // Send a signature request
+    // Sign the message
     let signature;
     try {
       signature = await provider.sign(msgHexString);
     } catch (error) {
-      console.error('error signing message', error);
-      return alert('Unsigned Transaction');
+      console.error("Signing error:", error, "Signing message", msgHexString);
+      return alert("Unsigned Transaction");
     }
 
-    const endpoint = new ZKCWasmServiceHelper();
+    // After the sdk modification is complete, remove the following code
+    const zkcWasmServiceHelperBaseURI =
+      "https://zkwasm-explorer.delphinuslab.com:8090";
 
+    const endpoint = new ZKCWasmServiceHelper(zkcWasmServiceHelperBaseURI);
+
+    // Submit proof
     const response = await endpoint.addProvingTask({
       ...info,
       signature,
     });
 
-    console.log('addProvingTask response:', response);
-    alert('Add proving task success!');
+    if (!response?.id)
+      return alert(
+        "Add proving task failed, Please check your lucky number and try again!"
+      );
+
+    console.log("addProvingTask response:", response);
+    alert("Add proving task success!");
 
     // Set the result onto the body
-    proofMessageNode.textContent = `Hello World! ZK Proof: ${response}`;
+    proofMessageNode.textContent = `Hello World! ZK Proof: https://zkwasm-explorer.delphinuslab.com/task/${response.id}`;
   });
 }
 ```
 
-4. Load `index.js` file in `index.html`:
+4.  Load `index.js` file in `index.html`:
 
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <title>ZK Hello World - AssemblyScript</title>
-    <link rel="preload" href="./index.js" as="script" />
   </head>
 
   <body>
-    <script type="module" src="./index.js"></script>
-    <button id="get-lucky" onclick="getRandomNumber()">get lucky!</button>
+    <button id="get-lucky">get lucky!</button>
     <p>
       lucky number:
       <span id="lucky-number"></span>
     </p>
-    <button id="submit-proof" onclick="submitProof()">
-      Submit your proof!
-    </button>
+    <button id="submit-proof">Submit your proof!</button>
     <p id="proof-message"></p>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
 ```
 
 ## Demo
 
-[1]: https://www.assemblyscript.org/compiler.html#using-the-compiler
-[2]: https://github.com/zkcrossteam/ZKC-SDK
+With the following command, you can compile and preview the project
+
+```shell
+parcel index.html
+```
+
+## More Info
+
+- [Compiling `zk-hello-world.c` into an WebAssembly module][4]
+- [Create application][3]
+
+[1]: https://github.com/zkcrossteam/ZKC-SDK
+[2]: https://parceljs.org/
+[3]: https://dev.zkcross.org/create-app
+[4]: https://git-pager.avosapps.us/wasmsrc/c/README.md

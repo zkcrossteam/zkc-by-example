@@ -8,10 +8,16 @@ This is a tutorial for initializing an instance of the WebAssembly module and ca
 
 ### Prerequisite
 
-- [ZKC-SDK][2], which can be installed by executing:
+- [ZKC-SDK][1], which can be installed by executing:
 
 ```shell
 npm install zkc-sdk
+```
+
+- [Parcel][2], or other build tool for web
+
+```shell
+npm install parcel
 ```
 
 ### Implementation
@@ -20,7 +26,8 @@ npm install zkc-sdk
 
 ```javascript
 import { WasmSDK } from '../../initWasm/wasmSDK';
-import helloWorldExample from './demo/assemblyscript/hello-world.wasm';
+
+const helloWorldURL = new URL('./wasmsrc/c/hello-world.wasm', import.meta.url);
 ```
 
 2.  Load wasm module instance and call the add function export from wasm
@@ -28,10 +35,10 @@ import helloWorldExample from './demo/assemblyscript/hello-world.wasm';
 ```javascript
 const runWasmAdd = async () => {
   // load wasm module instance
-  const { exports } = await WasmSDK.connect(helloWorldExample);
+  const { exports } = await WasmSDK.connect(helloWorldURL);
 
   // Call the Add function export from wasm, save the result
-  const addResult = exports.add(24, 24);
+  const addResult = exports.add(26, 26);
 
   // Set the result onto the body
   document.body.textContent = `Hello World! addResult: ${addResult}`;
@@ -59,5 +66,20 @@ runWasmAdd();
 
 ## Demo
 
-[1]: https://www.assemblyscript.org/compiler.html#using-the-compiler
-[2]: https://github.com/zkcrossteam/ZKC-SDK
+With the following command, you can compile and preview the project
+
+```shell
+parcel index.html
+```
+
+## More Info
+
+- [Compiling `hello-world.ts` into an WebAssembly module][3]
+- [Compiling `hello-world.c` into an WebAssembly module][4]
+- [Compiling `hello-world.rs` into an WebAssembly module][5]
+
+[1]: https://github.com/zkcrossteam/ZKC-SDK
+[2]: https://parceljs.org/
+[3]: https://git-pager.avosapps.us/wasmsrc/assemblyscript/README.md
+[4]: https://git-pager.avosapps.us/wasmsrc/c/README.md
+[5]: https://git-pager.avosapps.us/wasmsrc/rust/README.md

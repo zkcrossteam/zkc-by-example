@@ -13,20 +13,20 @@ This is a tutorial for compiling an C file into an WebAssembly module.
 ```shell
 # for Mac
 brew install llvm
-# for win10
-winget install -e --id LLVM.LLVM
+# for win10/11
+choco install llvm
 ```
 
 > Please make sure that the system environment variables have been added successfully
 
-#### Add zkWasm-C
+#### [zkWasm-C][2]
 
 First, you need to add the C SDK repository to the project, either directly in the project root folder by cloning it, or you can add the SDK repository as a Git submodule to the project.
 
 If you want to clone the repository, execute the following command:
 
 ```shell
-git clone git@github.com:zkcrossteam/zkWasm-C.git
+git clone https://github.com/zkcrossteam/zkWasm-C.git
 ```
 
 If you want to add submodules, execute the following command:
@@ -94,4 +94,4 @@ make
 ```
 
 [1]: https://llvm.org/
-[2]: https://github.com/zkcrossteam/ZKC-SDK
+[2]: https://github.com/zkcrossteam/zkWasm-C
