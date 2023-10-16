@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a tutorial for initializing an instance of the WebAssembly module and calling the functions within it.
+This is a tutorial for initializing an instance of the WebAssembly module and calling the functions within it using ZKC-SDK.
 
 ## Setup
 
@@ -67,7 +67,7 @@ runWasmAdd();
 </html>
 ```
 
-## Demo
+## Run
 
 With the following command, you can compile and preview the project
 
@@ -78,9 +78,9 @@ pnpm hello-world
 
 ## More Info
 
-- [Compiling `hello-world.ts` into an WebAssembly module][3]
-- [Compiling `hello-world.c` into an WebAssembly module][4]
-- [Compiling `hello-world.rs` into an WebAssembly module][5]
+- [Compiling Assemblyscript `hello-world.ts` into an WebAssembly module][3]
+- [Compiling C `hello-world.c` into an WebAssembly module][4]
+- [Compiling Rust `hello-world.rs` into an WebAssembly module][5]
 
 [1]: https://github.com/zkcrossteam/ZKC-SDK
 [2]: https://parceljs.org/
