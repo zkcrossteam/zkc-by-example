@@ -57,7 +57,6 @@ __attribute__((visibility("default"))) int zkmain()
 
   return 0;
 }
-
 ```
 
 2.  Create a Makefile
@@ -84,7 +83,6 @@ zk-hello-world.wasm: $(CFILES) sdk.wasm
 clean:
     sh $(SDKDIR)/sdk/scripts/clean.sh
     rm -f *.wasm *.wat
-
 ```
 
 3.  Compile that into a wasm module which will output a `zk-hello-world.wasm` :
