@@ -1,10 +1,7 @@
 import {
   withZKCWeb3MetaMaskProvider,
   ZKCWasmServiceHelper,
-  ZKCWasmServiceUtil,
-} from 'zkc-sdk';
-
-import { WasmSDK } from '../../initWasm/wasmSDK';
+} from '../../../ZKC-SDK/src/index';
 
 // Get the URL of the wasm file for initializing the WebAssembly instance.
 const zkHelloWorldURL = new URL(
@@ -29,7 +26,7 @@ async function getRandomNumber() {
   luckyNumberNode.textContent = randomNumber;
 
   // load wasm module instance
-  const { exports } = await WasmSDK.connect(zkHelloWorldURL);
+  const { exports } = await ZKCWasmServiceHelper.loadWasm(zkHelloWorldURL);
 
   // Call the checkLucky function export from zk-hello-world.wasm
   const isLucky = exports.checkLucky(randomNumber);
@@ -44,6 +41,8 @@ async function getRandomNumber() {
 async function submitProof() {
   withZKCWeb3MetaMaskProvider(async provider => {
     const userAddress = await provider.connect();
+    // polish after SDK update
+    // await provider.switchNet();
     // Whether the wallet has been connected
     if (!userAddress) return alert('Please connect your wallet.');
 
@@ -60,7 +59,7 @@ async function submitProof() {
     };
 
     // JSON.stringify
-    const msgHexString = ZKCWasmServiceUtil.createProvingSignMessage(info);
+    const msgHexString = JSON.stringify(info);
 
     // Sign the message
     let signature;
@@ -71,27 +70,24 @@ async function submitProof() {
       return alert('Unsigned Transaction');
     }
 
-    // After the sdk modification is complete, remove the following code
-    const zkcWasmServiceHelperBaseURI =
-      'https://zkwasm-explorer.delphinuslab.com:8090';
-
-    const endpoint = new ZKCWasmServiceHelper(zkcWasmServiceHelperBaseURI);
+    const zkc = new ZKCWasmServiceHelper();
 
     // Submit proof
-    const response = await endpoint.addProvingTask({
+    const response = await zkc.addProvingTask({
       ...info,
       signature,
     });
 
-    if (!response?.id)
+    console.log('addProvingTask response:', response);
+
+    if (!response.body?.application?.uuid)
       return alert(
         'Add proving task failed, Please check your lucky number and try again!',
       );
 
-    console.log('addProvingTask response:', response);
     alert('Add proving task success!');
 
     // Set the result onto the body
-    proofMessageNode.textContent = `Hello World! ZK Proof: https://zkwasm-explorer.delphinuslab.com/task/${response.id}`;
+    proofMessageNode.textContent = `Hello World! ZK Proof:https://scan.zkcross.org/request/${response.body?.application?.uuid}`;
   });
 }
