@@ -38,7 +38,7 @@ This project will implement a dice game, in which the sum of the dice will be us
 
 ### WASM
 
-#### Add SDK
+#### Add zkWasm-C
 
 First, you need to add the C SDK repository to the project, either directly in the project root folder by cloning it, or you can add the SDK repository as a Git submodule to the project.
 

@@ -8,7 +8,7 @@ This is a tutorial for initializing an instance of the WebAssembly module and ca
 
 ### Prerequisite
 
-> All the required dependencies are in package.json, and you can install all of them with the `pnpm i` command.if you just prefer to run a single example, you can also install the required dependencies individually with the following commands
+> All the required dependencies are in `package.json`, and you can install all of them with the `pnpm i` command.if you just prefer to run a single example, you can also install the required dependencies individually with the following commands
 
 - [ZKC-SDK][1], which can be installed by executing:
 
@@ -20,7 +20,6 @@ npm install zkc-sdk
 
 ```shell
 npm install parcel
-# or parcel index.html for compiling individually
 ```
 
 ### Implementation
@@ -28,8 +27,9 @@ npm install parcel
 1.  Import ZKC-SDK and `hello-world.wasm` in `index.js`
 
 ```javascript
-import { WasmSDK } from '../../initWasm/wasmSDK';
+import { ZKCWasmServiceHelper } from 'zkc-sdk';
 
+// Get the URL of the wasm file for initializing the WebAssembly instance.
 const helloWorldURL = new URL('./wasmsrc/c/hello-world.wasm', import.meta.url);
 ```
 
@@ -73,13 +73,17 @@ With the following command, you can compile and preview the project
 
 ```shell
 pnpm hello-world
+# or parcel index.html for compiling individually
 ```
 
 ## More Info
 
-- [Compiling `hello-world.ts` into an WebAssembly module](./wasmsrc/assemblyscript/README.md)
-- [Compiling `hello-world.c` into an WebAssembly module](./wasmsrc/c/README.md)
-- [Compiling `hello-world.rs` into an WebAssembly module](./wasmsrc/rust/README.md)
+- [Compiling `hello-world.ts` into an WebAssembly module][3]
+- [Compiling `hello-world.c` into an WebAssembly module][4]
+- [Compiling `hello-world.rs` into an WebAssembly module][5]
 
 [1]: https://github.com/zkcrossteam/ZKC-SDK
 [2]: https://parceljs.org/
+[3]: ./wasmsrc/assemblyscript/README.md
+[4]: ./wasmsrc/c/README.md
+[5]: ./wasmsrc/rust/README.md

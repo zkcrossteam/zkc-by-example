@@ -1,10 +1,11 @@
-import { WasmSDK } from '../../initWasm/wasmSDK';
+import { ZKCWasmServiceHelper } from 'zkc-sdk';
 
+// Get the URL of the wasm file for initializing the WebAssembly instance.
 const helloWorldURL = new URL('./wasmsrc/c/hello-world.wasm', import.meta.url);
 
 const runWasmAdd = async () => {
   // load wasm module instance
-  const { exports } = await WasmSDK.connect(helloWorldURL);
+  const { exports } = await ZKCWasmServiceHelper.loadWasm(helloWorldURL);
 
   // Call the Add function export from wasm, save the result
   const addResult = exports.add(26, 26);

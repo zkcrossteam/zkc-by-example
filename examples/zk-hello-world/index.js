@@ -1,7 +1,4 @@
-import {
-  withZKCWeb3MetaMaskProvider,
-  ZKCWasmServiceHelper,
-} from '../../../ZKC-SDK/src/index';
+import { withZKCWeb3MetaMaskProvider, ZKCWasmServiceHelper } from 'zkc-sdk';
 
 // Get the URL of the wasm file for initializing the WebAssembly instance.
 const zkHelloWorldURL = new URL(
@@ -41,10 +38,16 @@ async function getRandomNumber() {
 async function submitProof() {
   withZKCWeb3MetaMaskProvider(async provider => {
     const userAddress = await provider.connect();
-    // polish after SDK update
-    // await provider.switchNet();
     // Whether the wallet has been connected
     if (!userAddress) return alert('Please connect your wallet.');
+
+    // check network
+    try {
+      await provider.switchNet();
+    } catch (error) {
+      console.dir(error);
+      return alert(error.message);
+    }
 
     const luckyNumberValue = +luckyNumberNode.textContent || 0;
 
@@ -59,14 +62,14 @@ async function submitProof() {
     };
 
     // JSON.stringify
-    const msgHexString = JSON.stringify(info);
+    const messageString = JSON.stringify(info);
 
     // Sign the message
     let signature;
     try {
-      signature = await provider.sign(msgHexString);
+      signature = await provider.sign(messageString);
     } catch (error) {
-      console.error('Signing error:', error, 'Signing message', msgHexString);
+      console.error('Signing error:', error, 'Signing message', messageString);
       return alert('Unsigned Transaction');
     }
 
@@ -88,6 +91,6 @@ async function submitProof() {
     alert('Add proving task success!');
 
     // Set the result onto the body
-    proofMessageNode.textContent = `Hello World! ZK Proof:https://scan.zkcross.org/request/${response.body?.application?.uuid}`;
+    proofMessageNode.textContent = `Hello World! ZK Proof: https://scan.zkcross.org/request/${response.body?.application?.uuid}`;
   });
 }
