@@ -38,8 +38,9 @@
   "scripts": {
     "prepack": "husky install",
     "test": "lint-staged",
-    "dice-game": "rm -rf .parcel-cache && parcel ./examples/dice-game/index.html",
-    "hello-world": "rm -rf .parcel-cache && parcel ./examples/hello-world/index.html",
-    "zk-hello-world": "rm -rf .parcel-cache && parcel ./examples/zk-hello-world/index.html"
+    "clean": "rm -rf .parcel-cache/ dist/",
+    "dice-game": "npm run clean && parcel ./examples/dice-game/index.html",
+    "hello-world": "npm run clean && parcel ./examples/hello-world/index.html",
+    "zk-hello-world": "npm run clean && parcel ./examples/zk-hello-world/index.html"
   }
 }

@@ -2,13 +2,11 @@
 
 ## Overview
 
-This is a tutorial for initializing an instance of the WebAssembly module and calling the functions within it using ZKC-SDK.
+This is a tutorial for initializing an instance of the WebAssembly module and calling the functions within it.
 
 ## Setup
 
 ### Prerequisite
-
-> All the required dependencies are in `package.json`, and you can install all of them with the `pnpm i` command.if you just prefer to run a single example, you can also install the required dependencies individually with the following commands
 
 - [ZKC-SDK][1], which can be installed by executing:
 
@@ -38,7 +36,7 @@ const helloWorldURL = new URL('./wasmsrc/c/hello-world.wasm', import.meta.url);
 ```javascript
 const runWasmAdd = async () => {
   // load wasm module instance
-  const { exports } = await WasmSDK.connect(helloWorldURL);
+  const { exports } = await ZKCWasmService.loadWasm(helloWorldURL);
 
   // Call the Add function export from wasm, save the result
   const addResult = exports.add(26, 26);
@@ -72,15 +70,14 @@ runWasmAdd();
 With the following command, you can compile and preview the project
 
 ```shell
-pnpm hello-world
-# or parcel index.html for compiling individually
+parcel ./index.html
 ```
 
 ## More Info
 
-- [Compiling Assemblyscript `hello-world.ts` into an WebAssembly module][3]
-- [Compiling C `hello-world.c` into an WebAssembly module][4]
-- [Compiling Rust `hello-world.rs` into an WebAssembly module][5]
+- [Compiling `hello-world.ts` into an WebAssembly module][3]
+- [Compiling `hello-world.c` into an WebAssembly module][4]
+- [Compiling `hello-world.rs` into an WebAssembly module][5]
 
 [1]: https://github.com/zkcrossteam/ZKC-SDK
 [2]: https://parceljs.org/

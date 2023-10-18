@@ -13,7 +13,9 @@ This is a tutorial for compiling an C file into an WebAssembly module.
 ```shell
 # for Mac
 brew install llvm
-# for win10
+# for Win 7/8/10
+choco install llvm -y
+# for Win 10/11
 winget install -e --id LLVM.LLVM
 ```
 

@@ -8,8 +8,6 @@ This is a tutorial for initializing an instance of the WebAssembly module and ca
 
 ### Prerequisite
 
-> All the required dependencies are in `package.json`, and you can install all of them with the `pnpm i` command.if you just prefer to run a single example, you can also install the required dependencies individually with the following commands
-
 - [ZKC-SDK][1], which can be installed by executing:
 
 ```shell
@@ -29,14 +27,18 @@ npm install parcel
     > This is not a required step, you can use the application image id below to complete the proof.
 
 ```javascript
-// Application image id that has been created and can be used for task proofing, of course, you can upload the wasm application yourself to get the application id (which will cost some ETH)
+// Application image id that has been created and can be used for task proofing, of course, you can deploy the wasm application yourself to get the application id (which will cost some ETH)
 const ZK_HELLO_WORLD_MD5 = '4470FD5212FCDCAA5B50F3DC538FCDAE';
 ```
 
 2.  Import ZKC-SDK and `hello-world.wasm` in `index.js`
 
 ```javascript
-import { withZKCWeb3MetaMaskProvider, ZKCWasmServiceHelper } from 'zkc-sdk';
+import {
+  withZKCWeb3MetaMaskProvider,
+  ZKCWasmService,
+  ZKCProveService,
+}
 
 // Get the URL of the wasm file for initializing the WebAssembly instance.
 const zkHelloWorldURL = new URL(
@@ -71,56 +73,23 @@ async function getRandomNumber() {
 ```javascript
 async function submitProof() {
   withZKCWeb3MetaMaskProvider(async provider => {
-    const userAddress = await provider.connect();
-    // Whether the wallet has been connected
-    if (!userAddress) return alert('Please connect your wallet.');
-
-    // check network
-    try {
-      await provider.switchNet();
-    } catch (error) {
-      console.dir(error);
-      return alert(error.message);
-    }
-
     const luckyNumberValue = +luckyNumberNode.textContent || 0;
 
     if (luckyNumberValue === 0) return alert('Get your lucky number first!');
 
     // Information to be signed
-    const info = {
-      user_address: userAddress.toLowerCase(),
-      md5: ZK_HELLO_WORLD_MD5,
-      public_inputs: [],
-      private_inputs: [`0x${luckyNumberValue.toString(16)}:i64`],
+    const taskInfo = {
+      md5: 'ZK_HELLO_WORLD_MD5',
+      public_inputs: '(0x)[0-f]*:(i64|bytes|bytes-packed)',
+      private_inputs: '(0x)[0-f]*:(i64|bytes|bytes-packed)',
     };
 
-    // JSON.stringify
-    const messageString = JSON.stringify(info);
-
-    // Sign the message
-    let signature;
     try {
-      signature = await provider.sign(messageString);
+      var response = await new ZKCProveService().settlement(provider, taskInfo);
     } catch (error) {
-      console.error('Signing error:', error, 'Signing message', messageString);
-      return alert('Unsigned Transaction');
+      console.dir(error);
+      return alert(error.message ? error.message : 'Prove failed!');
     }
-
-    const zkc = new ZKCWasmServiceHelper();
-
-    // Submit proof
-    const response = await zkc.addProvingTask({
-      ...info,
-      signature,
-    });
-
-    console.log('addProvingTask response:', response);
-
-    if (!response.body?.application?.uuid)
-      return alert(
-        'Add proving task failed, Please check your lucky number and try again!',
-      );
 
     alert('Add proving task success!');
 
@@ -153,7 +122,7 @@ async function submitProof() {
 </html>
 ```
 
-## Demo
+## Run
 
 With the following command, you can compile and preview the project
 
