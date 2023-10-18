@@ -23,7 +23,7 @@ Make sure that the clang commands in all makefiles are the same as those used to
 > **Tips:** You can search for `CLANG` to check the settings of the clang command in the Makefile.
 
 ```shell
-cd src/examples/dice-game/demo/c
+cd examples/dice-game/wasmsrc/c
 
 make
 ```
@@ -150,7 +150,7 @@ You also need to make the following changes to the above:
 
     > The `CLANG` specified in all Makefile files in the SDK should be consistent with the local Clang command. You can check this by searching for `CLANG`.
 
-3.  You can replace `example.wasm` with the name of the file you want to generate.
+3.  You can replace `dice-game.wasm` with the name of the file you want to generate.
 
 #### Make
 

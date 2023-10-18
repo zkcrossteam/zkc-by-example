@@ -6,8 +6,6 @@ This is a tutorial for initializing an instance of the WebAssembly module and ca
 
 ### Prerequisite
 
-> All the required dependencies are in `package.json`, and you can install all of them with the `pnpm i` command.if you just prefer to run a single example, you can also install the required dependencies individually with the following commands
-
 - [ZKC-SDK][1], which can be installed by executing:
 
 ```shell
@@ -28,14 +26,18 @@ npm install parcel
 
 ```javascript
 // Application image id that has been created and can be used for task proofing, of course, you can upload the wasm application yourself to get the application id (which will cost some ETH)
-const zkc = new ZKCWasmServiceHelper();
-const response = await zkc.createApplication({
+const zkcWasm = new ZKCWasmService();
+
+const response = await zkcWasm.deployWasm({
   address: 'userAddress',
   name: 'dice-game-test1',
   description: 'Dice game test1',
   chainList: [5],
   signature: 'userAddress',
-  data: ['Wasm File', 'Icon File Max size 128x128'],
+  data: [
+    new File(blobWasm, 'test.wasm'),
+    new File(blobIcon, 'icon-file-max-size-128x128.png'),
+  ],
 });
 
 const DICE_GAME_MD5 = response?.body?.md5 || '665272C6FD6E4148784BF1BD2905301F';
@@ -54,13 +56,13 @@ const diceGameUrl = new URL('./wasmsrc/c/dice-game.wasm', import.meta.url);
 
 ```javascript
 useEffect(() => {
-  ZKCWasmServiceHelper.loadWasm(diceGameUrl).then(
-    ({ exports: { init, setBoard, getResult } }) => {
+  ZKCWasmService.loadWasm <
+    DiceGame >
+    diceGameUrl.then(({ exports: { init, setBoard, getResult } }) => {
       init();
       diceArr.forEach(setBoard);
       setSum(getResult);
-    },
-  );
+    });
 }, [diceArr]);
 ```
 
@@ -88,31 +90,28 @@ const publicInputs = useMemo(() => [`0x${sum.toString(16)}:i64`], [sum]);
 const info = {
   user_address: 'userAddress.toLowerCase()',
   md5: 'DICE_GAME_MD5',
-  public_inputs: publicInputs,
-  private_inputs: witness,
+  public_inputs: '(0x)[0-f]*:(i64|bytes|bytes-packed)',
+  private_inputs: '(0x)[0-f]*:(i64|bytes|bytes-packed)',
 };
 ```
 
 - Submit proof
 
 ```javascript
-const zkc = new ZKCWasmServiceHelper();
-// JSON stringify
-const messageString = JSON.stringify(info);
+// Signed information
+const taskInfo = {
+  md5: 'DICE_GAME_MD5',
+  public_inputs: '(0x)[0-f]*:(i64|bytes|bytes-packed)',
+  private_inputs: '(0x)[0-f]*:(i64|bytes|bytes-packed)',
+};
 
-// Sign the message
-const signature = await provider.sign(messageString);
-
-// Submit task
-const res = await zkc.addProvingTask({
-  ...info,
-  signature,
-});
+// proof settlement
+await zkcProve.settlement(provider, taskInfo);
 ```
 
 > **Note:** Each time you add a task, the program deducts a certain amount of balance from the upload account of the application.
 
-5.  Load `index.jsx` file in `index.html`:
+5.  Load `index.tsx` file in `index.html`:
 
 ```html
 <!doctype html>
@@ -128,18 +127,17 @@ const res = await zkc.addProvingTask({
 
   <body>
     <div id="app"></div>
-    <script type="module" src="./index.jsx"></script>
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>
 ```
 
-## Demo
+## Run
 
 With the following command, you can compile and preview the project
 
 ```shell
-pnpm dice-game
-# or parcel index.html for compiling individually
+parcel index.html for compiling individually
 ```
 
 ## More Info
