@@ -2,7 +2,7 @@ import {
   withZKCWeb3MetaMaskProvider,
   ZKCWasmService,
   ZKCProveService,
-} from '../../../ZKC-SDK/src/index';
+} from 'zkc-sdk';
 
 // Get the URL of the wasm file for initializing the WebAssembly instance.
 const zkHelloWorldURL = new URL(

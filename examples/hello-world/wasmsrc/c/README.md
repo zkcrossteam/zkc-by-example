@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a tutorial for compiling an C file into an WebAssembly module.
+This is a tutorial for compiling a C file into a WebAssembly module.
 
 ## Setup
 
@@ -32,7 +32,7 @@ __attribute__((visibility("default"))) int add(int a, int b)
 }
 ```
 
-2.  Compile that into a wasm module which will output a `hello-world.wasm` :
+2.  Compile `hello-world.c` into a wasm module which will output a `hello-world.wasm` :
 
 ```shell
 clang --target=wasm32 --no-standard-libraries -Wl,--export-all -Wl,--no-entry -o hello-world.wasm hello-world.c

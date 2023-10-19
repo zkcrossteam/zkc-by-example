@@ -133,7 +133,7 @@ pnpm zk-hello-world
 
 ## More Info
 
-- [Compiling `zk-hello-world.c` into an WebAssembly module][3]
+- [Compiling `zk-hello-world.c` into a WebAssembly module][3]
 - [Create application][4]
 
 [1]: https://github.com/zkcrossteam/ZKC-SDK

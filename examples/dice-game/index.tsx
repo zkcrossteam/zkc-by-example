@@ -1,28 +1,28 @@
 import { render } from 'react-dom';
-import { useEffect, useMemo, useState, useRef } from 'react';
+import { useEffect, useMemo, useState, useRef, FC } from 'react';
 import ReactDice, { ReactDiceRef } from 'react-dice-complete';
 
 import {
   withZKCWeb3MetaMaskProvider,
   ZKCProveService,
   ZKCWasmService,
-} from '../../../ZKC-SDK/src/index';
+} from 'zkc-sdk';
 
 export interface MyReactDiceProps {
   rollDone: (diceValue: number[]) => any;
 }
 
-export interface DiceGame {
+export type DiceGame = {
   setBoard: (input: number) => void;
   getBoard: (index: number) => number;
   getResult: () => number;
   init: () => void;
-}
+};
 
 const diceGameUrl = new URL('./wasmsrc/c/dice-game.wasm', import.meta.url);
 const moonIcon = new URL('./moon.png', import.meta.url);
 
-export function MyReactDice({ rollDone }: MyReactDiceProps) {
+export const MyReactDice: FC<MyReactDiceProps> = ({ rollDone }) => {
   const reactDice = useRef<ReactDiceRef>(null);
 
   const rollAll = () => reactDice.current?.rollAll();
@@ -39,7 +39,7 @@ export function MyReactDice({ rollDone }: MyReactDiceProps) {
       />
     </>
   );
-}
+};
 
 // Application image id that has been created and can be used for task proofing
 const TUTORIAL_MD5 = '665272C6FD6E4148784BF1BD2905301F';
@@ -66,7 +66,6 @@ export function Home() {
   const publicInputs = useMemo(() => [`0x${sum.toString(16)}:i64`], [sum]);
 
   useEffect(() => {
-    // @ts-ignore
     ZKCWasmService.loadWasm<DiceGame>(diceGameUrl).then(
       ({ exports: { init, setBoard, getResult } }) => {
         init();
@@ -103,7 +102,8 @@ export function Home() {
       const moonImage = await (await fetch(moonIcon)).blob(),
         moonFile = new File([moonImage], 'moon-icon');
 
-      // deploy application
+      // You can create a wasm application by calling the deployWasm method below, or you can prove the task directly with an existing application image.
+
       // const response = await zkcWasm.deployWasm({
       //   address: userAddress,
       //   name: 'dice-game-test1',
@@ -129,7 +129,7 @@ export function Home() {
         await zkcProve.settlement(provider, taskInfo);
       } catch (error: any) {
         console.dir(error);
-        return alert(error.message ? error.message : 'Prove failed!');
+        return alert(error.message || 'Prove failed!');
       }
 
       alert('Add proving task success!');

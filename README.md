@@ -1,22 +1,33 @@
 # ZKC-by-example
 
-> ZKC-by-example contains some examples showing how to create a ZKCross wasm application and deploy the proof to the chain with [ZKC-SDK][1].
+> ZKC-by-example contains some examples demonstrating how to create a ZKCross wasm application and deploy the proof to the chain with [ZKC-SDK][1].
 
 ## Example list
 
-1.  hello world Getting started with wasm, we will compile Typescript/C/Rust to WebAssembly and initialize it with the ZKC sdk, and then we are able to call the method exported from WebAssembly to get a lucky number.
-2.  ZK hello world zkWASM-C basics, in this example, we will add zkWasm-C as a submodule, compile and call the methods in zkWasm-C, finally, we will prove our inputs and deploy the proof onto the chain with ZKC SDK
-3.  dice game For an advanced challenge, we will create a complete ZKCross web application which includes compiling and running the wasm file, creating and deploying the wasm application, and finally submitting proof and deploy it onto the chain.
+1.  **Hello World**
+
+    To get started, we'll compile TypeScript/C/Rust into WebAssembly and initialize it with the ZKC SDK. Then, we can call the methods exported from WebAssembly to obtain a lucky number.
+
+2.  **ZK Hello World**
+
+    Basics of zkWasm-C. In this example, we'll add zkWasm-C as a submodule, compile it, and call its methods. Afterwards, we'll prove our inputs and deploy the proof to the chain with ZKC SDK.
+
+3.  **Dice Game**
+
+    For a more advanced challenge, we'll create a complete ZKCross web application, which involves compiling and running the wasm file, creating and deploying the wasm application, and submitting the proof for deployment on the chain.
 
 ## Technology Stack
 
-- Front end
+- **Front end**
+
   - Language: [TypeScript v5][2]
   - Component engine: [React v18][3]
   - CSS utility class: [Bootstrap v5][4]
   - Package management tool: [pnpm][5]
   - CI / CD: [GitHub Actions][6] + [Vercel][7]
-- WASM
+
+- **WASM**
+
   - Language: [C][8]
   - Compilation tool: [Clang][9]
 
@@ -30,18 +41,20 @@ git clone https://github.com/zkcrossteam/ZKC-by-example.git
 
 ### Frontend
 
-If you want to launch and preview any of example, you can execute the following command
+If you want to launch and preview any of the examples, you can execute the following command.
 
-> [Node.js][10] and [pnpm][11] is required.
+> [Node.js][10] and [pnpm][11] are required.
 
 ```shell
 pnpm i
 
-# For hello world example
+# For Hello World example
 pnpm hello-world
-# For zk hello world example
+
+# For ZK Hello World example
 pnpm zk-hello-world
-# For dice game example
+
+# For Dice Game example
 pnpm dice-game
 ```
 

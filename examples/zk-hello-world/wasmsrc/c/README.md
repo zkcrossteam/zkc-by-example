@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a tutorial for compiling an C file into an WebAssembly module.
+This is a tutorial for compiling a C file into a WebAssembly module.
 
 ## Setup
 
@@ -87,7 +87,7 @@ clean:
     rm -f *.wasm *.wat
 ```
 
-3.  Compile that into a wasm module which will output a `zk-hello-world.wasm` :
+3.  Compile `zk-hello-world.c` into a wasm module which will output a `zk-hello-world.wasm` :
 
 ```shell
 make

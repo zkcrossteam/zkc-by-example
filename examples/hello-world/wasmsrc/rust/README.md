@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a tutorial for compiling an Rust file into an WebAssembly module.
+This is a tutorial for compiling a Rust file into a WebAssembly module.
 
 ## Setup
 
@@ -66,7 +66,7 @@ pub fn add(a: i32, b: i32) -> i32 {
 }
 ```
 
-4.  Compile that into a wasm module which will output a `hello-world.wasm` :
+4.  Compile `lib.rs` into a wasm module which will output a `hello-world.wasm` :
 
 ```shell
 wasm-pack build --target web
@@ -77,4 +77,3 @@ This will output a `pkg/` directory containing our wasm module, wrapped in a js 
 [1]: https://www.rust-lang.org/tools/install
 [2]: https://rustwasm.github.io/wasm-pack/installer/
 [3]: https://learn.microsoft.com/en-us/windows/wsl/install
-[4]: https://github.com/zkcrossteam/ZKC-SDK

@@ -1,6 +1,7 @@
 [submodule "zkWasm-C"]
 	path = zkWasm-C
 	url = git@github.com:DelphinusLab/zkWasm-C.git
+
 [submodule "ZKC-SDK"]
 	path = ZKC-SDK
-	url = https://github.com/idea2app/ZKC-SDK.git
+	url = git@github.com:zkcrossteam/ZKC-SDK.git
