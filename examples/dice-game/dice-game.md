@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a tutorial for initializing an instance of the WebAssembly module and calling the functions within it.
+This is a tutorial for a simple dice-game by using [ZKC-SDK][1].
 
 ### Prerequisite
 
@@ -46,7 +46,7 @@ const DICE_GAME_MD5 = response?.body?.md5 || '665272C6FD6E4148784BF1BD2905301F';
 2.  Import ZKC-SDK and `dice-game.wasm` in `index.jsx`
 
 ```javascript
-import { withZKCWeb3MetaMaskProvider, ZKCWasmServiceHelper } from 'zkc-sdk';
+import { withZKCWeb3MetaMaskProvider, ZKCWasmService } from 'zkc-sdk';
 
 // Get the URL of the wasm file for initializing the WebAssembly instance.
 const diceGameUrl = new URL('./wasmsrc/c/dice-game.wasm', import.meta.url);
@@ -117,7 +117,7 @@ await zkcProve.settlement(provider, taskInfo);
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World - AssemblyScript</title>
+    <title>Dice game</title>
     <link
       rel="stylesheet"
       href="https://unpkg.com/bootstrap@5.3.0/dist/css/bootstrap-utilities.min.css"

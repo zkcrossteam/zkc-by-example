@@ -2,7 +2,9 @@
 
 ## Overview
 
-This is a tutorial for initializing an instance of the WebAssembly module and calling the functions within it.
+This tutorial guides you through initializing an instance of the WebAssembly module, calling its functions, and ensuring the correct execution of the function by generating a zero knowledge proof and verifying it on-chain using the [ZKC-SDK][1].
+
+The goal of this example is to prove that the user has indeed obtained a lucky number that satisfies the condition (number % 2 == 1).
 
 ## Setup
 
@@ -99,14 +101,14 @@ async function submitProof() {
 }
 ```
 
-4.  Load `index.js` file in `index.html`:
+5.  Load `index.js` file in `index.html`:
 
 ```html
 <!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>ZK Hello World - AssemblyScript</title>
+    <title>ZK Hello World</title>
   </head>
 
   <body>

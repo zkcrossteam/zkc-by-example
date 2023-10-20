@@ -61,6 +61,13 @@ __attribute__((visibility("default"))) int zkmain()
 }
 ```
 
+
+This file contains a zkmain() function, serving as the proof entry point.
+wasm_input(0) is used to read the proof's private input, known as the witness.
+wasm_input(1) is used to read the proof's public input, though it is not utilized in this example.
+
+What this function can proof is that the caller/user has indeed obtained a lucky number which satisfying the condition (number % 2 == 1).
+
 2.  Create a Makefile
 
 ```Makefile
