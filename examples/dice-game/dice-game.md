@@ -54,10 +54,9 @@ const diceGameUrl = new URL('./wasmsrc/c/dice-game.wasm', import.meta.url);
 
 3.  Load wasm module instance and call the getLucky function export from wasm module
 
-```javascript
+```ts
 useEffect(() => {
-  ZKCWasmService.loadWasm <
-    DiceGame >
+  ZKCWasmService.loadWasm<DiceGame>
     diceGameUrl.then(({ exports: { init, setBoard, getResult } }) => {
       init();
       diceArr.forEach(setBoard);
@@ -142,7 +141,7 @@ parcel index.html for compiling individually
 
 ## More Info
 
-- [Compiling `dice-game.c` into an WebAssembly module][4]
+- [Compiling `dice-game.c` into a WebAssembly module][4]
 - [Create application][3]
 
 [1]: https://github.com/zkcrossteam/ZKC-SDK

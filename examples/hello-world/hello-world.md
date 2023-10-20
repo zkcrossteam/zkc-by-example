@@ -8,13 +8,13 @@ This is a tutorial for initializing an instance of the WebAssembly module and ca
 
 ### Prerequisite
 
-- [ZKC-SDK][1], which can be installed by executing:
+-   [ZKC-SDK][1], which can be installed by executing:
 
 ```shell
 npm install zkc-sdk
 ```
 
-- [Parcel][2], or other build tool for web
+-   [Parcel][2], or other build tool for web
 
 ```shell
 npm install parcel
@@ -75,12 +75,12 @@ parcel ./index.html
 
 ## More Info
 
-- [Compiling `hello-world.ts` into an WebAssembly module][3]
-- [Compiling `hello-world.c` into an WebAssembly module][4]
-- [Compiling `hello-world.rs` into an WebAssembly module][5]
+-   [Compiling `hello-world.ts` into a WebAssembly module][3]
+-   [Compiling `hello-world.c` into a WebAssembly module][4]
+-   [Compiling `hello-world.rs` into a WebAssembly module][5]
 
 [1]: https://github.com/zkcrossteam/ZKC-SDK
 [2]: https://parceljs.org/
-[3]: ./wasmsrc/assemblyscript/README.md
-[4]: ./wasmsrc/c/README.md
-[5]: ./wasmsrc/rust/README.md
+[3]: https://git-pager.vercel.app/wasmsrc/assemblyscript/README.md
+[4]: https://git-pager.vercel.app/wasmsrc/c/README.md
+[5]: https://git-pager.vercel.app/wasmsrc/rust/README.md

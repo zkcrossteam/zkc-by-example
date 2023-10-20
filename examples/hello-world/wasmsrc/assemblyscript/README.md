@@ -2,13 +2,13 @@
 
 ## Overview
 
-This is a tutorial for compiling an Assemblyscript file into an WebAssembly module.
+This is a tutorial for compiling an AssemblyScript file into a WebAssembly module.
 
 ## Setup
 
 ### Prerequisite
 
-- [AssemblyScript Compiler][1], which can be installed by executing:
+-   [AssemblyScript Compiler][1], which can be installed by executing:
 
 ```shell
 npm install -g assemblyscript
@@ -29,7 +29,7 @@ export function add(a: i32, b: i32): i32 {
 }
 ```
 
-2.  Compile that into a wasm module which will output a `hello-world.wasm` :
+2.  Compile `hello-world.ts` into a wasm module which will output a `hello-world.wasm` :
 
 ```shell
 asc hello-world.ts -o hello-world.wasm

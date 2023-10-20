@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a tutorial for compiling an C file into an WebAssembly module.
+This is a tutorial for compiling a C file into a WebAssembly module.
 
 ## Setup
 
