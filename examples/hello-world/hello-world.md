@@ -8,13 +8,13 @@ This is a tutorial for initializing an instance of the WebAssembly module and ca
 
 ### Prerequisite
 
--   [ZKC-SDK][1], which can be installed by executing:
+- [ZKC-SDK][1], which can be installed by executing:
 
 ```shell
 npm install zkc-sdk
 ```
 
--   [Parcel][2], or other build tool for web
+- [Parcel][2], or other build tool for web
 
 ```shell
 npm install parcel
@@ -55,7 +55,7 @@ runWasmAdd();
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World - AssemblyScript</title>
+    <title>Hello World</title>
     <link rel="preload" href="./index.js" as="script" />
   </head>
 
@@ -75,12 +75,12 @@ parcel ./index.html
 
 ## More Info
 
--   [How to compile Assemblyscript `hello-world.ts` into a WebAssembly module][3]
--   [How to compile C `hello-world.c` into a WebAssembly module][4]
--   [How to compile Rust `hello-world.rs` into a WebAssembly module][5]
+- [How to compile Assemblyscript `hello-world.ts` into a WebAssembly module][3]
+- [How to compile C `hello-world.c` into a WebAssembly module][4]
+- [How to compile Rust `hello-world.rs` into a WebAssembly module][5]
 
 [1]: https://github.com/zkcrossteam/ZKC-SDK
 [2]: https://parceljs.org/
-[3]: https://git-pager.vercel.app/wasmsrc/assemblyscript/README.md
-[4]: https://git-pager.vercel.app/wasmsrc/c/README.md
-[5]: https://git-pager.vercel.app/wasmsrc/rust/README.md
+[3]: ./wasmsrc/assemblyscript/README.md
+[4]: ./wasmsrc/c/README.md
+[5]: ./wasmsrc/rust/README.md

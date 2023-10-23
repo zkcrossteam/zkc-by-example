@@ -56,12 +56,12 @@ const diceGameUrl = new URL('./wasmsrc/c/dice-game.wasm', import.meta.url);
 
 ```ts
 useEffect(() => {
-  ZKCWasmService.loadWasm<DiceGame>
-    diceGameUrl.then(({ exports: { init, setBoard, getResult } }) => {
-      init();
-      diceArr.forEach(setBoard);
-      setSum(getResult);
-    });
+  ZKCWasmService.loadWasm<DiceGame>;
+  diceGameUrl.then(({ exports: { init, setBoard, getResult } }) => {
+    init();
+    diceArr.forEach(setBoard);
+    setSum(getResult);
+  });
 }, [diceArr]);
 ```
 
@@ -117,7 +117,7 @@ await zkcProve.settlement(provider, taskInfo);
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Dice game</title>
+    <title>Dice Game</title>
     <link
       rel="stylesheet"
       href="https://unpkg.com/bootstrap@5.3.0/dist/css/bootstrap-utilities.min.css"
