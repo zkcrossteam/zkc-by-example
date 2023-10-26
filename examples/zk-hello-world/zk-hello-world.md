@@ -129,8 +129,7 @@ async function submitProof() {
 With the following command, you can compile and preview the project
 
 ```shell
-pnpm zk-hello-world
-# or parcel index.html for compiling individually
+npm run start
 ```
 
 ## More Info

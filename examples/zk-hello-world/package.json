@@ -1,0 +1,13 @@
+{
+    "name": "@zkcrossteam/zk-hello-world",
+    "private": true,
+    "source": "index.html",
+    "dependencies": {
+        "parcel": "^2.10.1",
+        "zkc-sdk": "^0.1.1-alpha"
+    },
+    "scripts": {
+        "clean": "rm -rf .parcel-cache/ dist/",
+        "start": "npm run clean && parcel ./index.html"
+    }
+}

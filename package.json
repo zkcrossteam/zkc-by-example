@@ -6,22 +6,21 @@
   "author": "zkcrossteam",
   "description": "zkc tutorial examples",
   "dependencies": {
-    "ethers": "~5.7",
-    "parcel": "^2.10.0",
+    "parcel": "^2.10.1",
     "react": "^18.2.0",
     "react-dice-complete": "^2.2.0",
     "react-dom": "^18.2.0",
-    "zkc-sdk": "0.3.0-alpha"
+    "zkc-sdk": "0.1.1-alpha"
   },
   "devDependencies": {
-    "@types/node": "^18.18.6",
-    "@types/react": "^18.2.29",
+    "@types/node": "^20.8.9",
+    "@types/react": "^18.2.33",
     "@types/react-dom": "^18.2.14",
-    "eslint": "^8.51.0",
+    "eslint": "^8.52.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "get-git-folder": "^0.1.2",
     "husky": "^8.0.3",
-    "lint-staged": "^13.3.0",
+    "lint-staged": "^15.0.2",
     "prettier": "^3.0.3",
     "process": "^0.11.10",
     "typescript": "~5.2.2"
@@ -38,9 +37,11 @@
   "scripts": {
     "prepack": "husky install",
     "test": "lint-staged",
+    "pack": "parcel build --no-source-maps ./src/examples/dice-game/index.html --public-url .",
+    "build": "npm run clean  && npm run pack",
     "clean": "rm -rf .parcel-cache/ dist/",
-    "dice-game": "npm run clean && parcel ./examples/dice-game/index.html",
-    "hello-world": "npm run clean && parcel ./examples/hello-world/index.html",
-    "zk-hello-world": "npm run clean && parcel ./examples/zk-hello-world/index.html"
+    "dice-game": "cd ./examples/dice-game && npm run clean && parcel ./index.html",
+    "hello-world": "cd ./examples/hello-world && npm run clean && parcel ./index.html",
+    "zk-hello-world": "cd ./examples/zk-hello-world && npm run clean && parcel ./index.html"
   }
 }

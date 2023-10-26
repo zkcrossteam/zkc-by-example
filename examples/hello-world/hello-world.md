@@ -70,7 +70,7 @@ runWasmAdd();
 With the following command, you can compile and preview the project
 
 ```shell
-parcel ./index.html
+npm run start
 ```
 
 ## More Info
