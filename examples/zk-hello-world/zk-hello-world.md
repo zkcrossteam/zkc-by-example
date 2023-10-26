@@ -22,14 +22,21 @@ npm install zkc-sdk
 npm install parcel
 ```
 
-### Implementation
+## Run
+
+With the following command, you can compile and preview the project
+
+```shell
+npx parcel index.html
+```
+
+## Implementation
 
 1.  Create application through [ZKC-DeveloperCenter][3]
 
     > This is not a required step, you can use the application image id below to complete the proof.
 
 ```javascript
-// Application image id that has been created and can be used for task proofing, of course, you can deploy the wasm application yourself to get the application id (which will cost some ETH)
 const ZK_HELLO_WORLD_MD5 = '4470FD5212FCDCAA5B50F3DC538FCDAE';
 ```
 
@@ -49,7 +56,7 @@ const zkHelloWorldURL = new URL(
 );
 ```
 
-3.  Load wasm module instance and call the getLucky function export from wasm module
+3.  Load wasm module instance and call the checkLucky function export from wasm module
 
 ```javascript
 // get random number
@@ -70,7 +77,7 @@ async function getRandomNumber() {
 }
 ```
 
-4.  Submit proof
+4.  Submit proof about your lucky
 
 ```javascript
 async function submitProof() {
@@ -117,20 +124,11 @@ async function submitProof() {
       lucky number:
       <span id="lucky-number"></span>
     </p>
-    <button id="submit-proof">Submit your proof!</button>
+    <button id="submit-proof">Submit your lucky proof!</button>
     <p id="proof-message"></p>
     <script type="module" src="./index.js"></script>
   </body>
 </html>
-```
-
-## Run
-
-With the following command, you can compile and preview the project
-
-```shell
-pnpm zk-hello-world
-# or parcel index.html for compiling individually
 ```
 
 ## More Info
