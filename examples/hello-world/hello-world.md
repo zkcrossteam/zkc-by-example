@@ -6,7 +6,7 @@ This is a tutorial for initializing an instance of the WebAssembly module and ca
 
 ## Setup
 
-### Prerequisite
+## Install Prerequisite
 
 - [ZKC-SDK][1], which can be installed by executing:
 
@@ -14,13 +14,15 @@ This is a tutorial for initializing an instance of the WebAssembly module and ca
 npm install zkc-sdk
 ```
 
-- [Parcel][2], or other build tool for web
+## Run
+
+With the following command, you can compile and preview the project
 
 ```shell
-npm install parcel
+npm run start
 ```
 
-### Implementation
+## Implementation
 
 1.  Import ZKC-SDK and `hello-world.wasm` in `index.js`
 
@@ -63,14 +65,6 @@ runWasmAdd();
     <script type="module" src="./index.js"></script>
   </body>
 </html>
-```
-
-## Run
-
-With the following command, you can compile and preview the project
-
-```shell
-npm run start
 ```
 
 ## More Info
