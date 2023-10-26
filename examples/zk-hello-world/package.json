@@ -9,5 +9,8 @@
     "scripts": {
         "clean": "rm -rf .parcel-cache/ dist/",
         "start": "npm run clean && parcel ./index.html"
+    },
+    "devDependencies": {
+        "process": "^0.11.10"
     }
 }

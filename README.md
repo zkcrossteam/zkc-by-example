@@ -1,16 +1,16 @@
-# ZKC-by-example
+# zkc-by-example
 
-> ZKC-by-example contains some examples demonstrating how to create a ZKCross wasm application and deploy the proof to the chain with [ZKC-SDK][1].
+> zkc-by-example contains some examples demonstrating how to create a ZKCross wasm application, generate and verify the zkProof on-chain by using [zkc-sdk][1].
 
 ## Example list
 
 1.  **Hello World**
 
-    To get started, we'll compile TypeScript/C/Rust into WebAssembly and initialize it with the ZKC SDK. Then, we can call the methods exported from WebAssembly to obtain a lucky number.
+    To get started, we'll compile TypeScript/C/Rust into WebAssembly and initialize it with the zkc-sdk. Then, we can call the methods exported from WebAssembly..
 
 2.  **ZK Hello World**
 
-    Basics of zkWasm-C. In this example, we'll add zkWasm-C as a submodule, compile it, and call its methods. Afterwards, we'll prove our inputs and deploy the proof to the chain with ZKC SDK.
+    Basics of zkWasm-C. In this example, we'll add zkWasm-C as a submodule, compile it, and call its methods. Afterwards, we'll prove our inputs and deploy the proof to the chain with zkc-sdk
 
 3.  **Dice Game**
 
@@ -28,13 +28,13 @@
 
 - **WASM**
 
-  - Language: [C][8]
+  - Language: [C][8] [Rust]
   - Compilation tool: [Clang][9]
 
 ## How To Run This Repository
 
 ```shell
-git clone https://github.com/zkcrossteam/ZKC-by-example.git
+git clone https://github.com/zkcrossteam/zkc-by-example.git
 ```
 
 ## How to compile

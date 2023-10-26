@@ -2,18 +2,18 @@
 
 ## Overview
 
-This tutorial guides you through initializing an instance of the WebAssembly module, calling its functions, and ensuring the correct execution of the function by generating a zero knowledge proof and verifying it on-chain using the [ZKC-SDK][1].
+This tutorial guides you through initializing an instance of the WebAssembly module, calling its functions, and ensuring the correct execution of the function by generating a zero knowledge proof and verifying it on-chain using the [zkc-sdk][1].
 
 The goal of this example is to prove that the user has indeed obtained a lucky number that satisfies the condition (number % 2 == 1).
 
 ## Setup
 
-### Install Prerequisite
+### Prerequisite
 
-- [ZKC-SDK][1], which can be installed by executing:
+- [zkc-sdk][1], which can be installed by executing:
 
 ```shell
-npm install zkc-sdk
+npm install
 ```
 
 ## Run
@@ -130,7 +130,7 @@ async function submitProof() {
 - [Compiling `zk-hello-world.c` into a WebAssembly module][3]
 - [Create application][4]
 
-[1]: https://github.com/zkcrossteam/ZKC-SDK
+[1]: https://github.com/zkcrossteam/zkc-sdk
 [2]: https://parceljs.org/
 [3]: ./wasmsrc/c/README.md
 [4]: https://dev.zkcross.org/create-app

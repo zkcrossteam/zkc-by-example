@@ -2,16 +2,16 @@
 
 ## Overview
 
-This is a tutorial for initializing an instance of the WebAssembly module and calling the functions within it using [ZKC-SDK][1].
+This is a tutorial for initializing an instance of the WebAssembly module and calling the functions within it using [zkc-sdk][1].
 
 ## Setup
 
-## Install Prerequisite
+## Prerequisite
 
-- [ZKC-SDK][1], which can be installed by executing:
+- [zkc-sdk][1], which can be installed by executing:
 
 ```shell
-npm install zkc-sdk
+npm install
 ```
 
 ## Run
@@ -24,7 +24,7 @@ npm run start
 
 ## Implementation
 
-1.  Import ZKC-SDK and `hello-world.wasm` in `index.js`
+1.  Import zkc-sdk and `hello-world.wasm` in `index.js`
 
 ```javascript
 import { ZKCWasmService } from 'zkc-sdk';
@@ -73,7 +73,7 @@ runWasmAdd();
 - [How to compile C `hello-world.c` into a WebAssembly module][4]
 - [How to compile Rust `hello-world.rs` into a WebAssembly module][5]
 
-[1]: https://github.com/zkcrossteam/ZKC-SDK
+[1]: https://github.com/zkcrossteam/zkc-sdk
 [2]: https://parceljs.org/
 [3]: ./wasmsrc/assemblyscript/README.md
 [4]: ./wasmsrc/c/README.md
