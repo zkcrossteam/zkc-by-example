@@ -6,7 +6,7 @@ This is a tutorial for initializing an instance of the WebAssembly module and ca
 
 ## Setup
 
-### Prerequisite
+## Install Prerequisite
 
 - [ZKC-SDK][1], which can be installed by executing:
 
@@ -14,18 +14,12 @@ This is a tutorial for initializing an instance of the WebAssembly module and ca
 npm install zkc-sdk
 ```
 
-- [Parcel][2], or other build tool for web
-
-```shell
-npm install parcel
-```
-
 ## Run
 
 With the following command, you can compile and preview the project
 
 ```shell
-npx parcel index.html
+npm run start
 ```
 
 ## Implementation

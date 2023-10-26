@@ -8,7 +8,7 @@ The goal of this example is to prove that the user has indeed obtained a lucky n
 
 ## Setup
 
-### Prerequisite
+### Install Prerequisite
 
 - [ZKC-SDK][1], which can be installed by executing:
 
@@ -16,18 +16,12 @@ The goal of this example is to prove that the user has indeed obtained a lucky n
 npm install zkc-sdk
 ```
 
-- [Parcel][2], or other build tool for web
-
-```shell
-npm install parcel
-```
-
 ## Run
 
 With the following command, you can compile and preview the project
 
 ```shell
-npx parcel index.html
+npm run start
 ```
 
 ## Implementation

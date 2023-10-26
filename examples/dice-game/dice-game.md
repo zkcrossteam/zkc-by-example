@@ -136,7 +136,7 @@ await zkcProve.settlement(provider, taskInfo);
 With the following command, you can compile and preview the project
 
 ```shell
-parcel index.html for compiling individually
+pnpm run start
 ```
 
 ## More Info

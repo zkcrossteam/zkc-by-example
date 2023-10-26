@@ -1,0 +1,36 @@
+{
+    "name": "@zkcrossteam/dice-game",
+    "private": true,
+    "source": "index.html",
+    "dependencies": {
+        "parcel": "^2.10.1",
+        "react": "^18.2.0",
+        "react-dice-complete": "^2.2.0",
+        "react-dom": "^18.2.0",
+        "zkc-sdk": "^0.1.1-alpha"
+    },
+    "devDependencies": {
+        "@types/node": "^20.8.9",
+        "@types/react": "^18.2.33",
+        "@types/react-dom": "^18.2.14",
+        "eslint": "^8.52.0",
+        "eslint-plugin-simple-import-sort": "^10.0.0",
+        "husky": "^8.0.3",
+        "lint-staged": "^15.0.2",
+        "prettier": "^3.0.3",
+        "typescript": "~5.2.2"
+    },
+    "prettier": {
+        "singleQuote": true,
+        "trailingComma": "all",
+        "arrowParens": "avoid"
+    },
+    "lint-staged": {
+        "*.{html,md,less,css,json,yml,js,ts,tsx}": "prettier --write",
+        "*.{js,jsx,ts,tsx}": "eslint --fix"
+    },
+    "scripts": {
+        "clean": "rm -rf .parcel-cache/ dist/",
+        "start": "npm run clean && parcel ./index.html"
+    }
+}
