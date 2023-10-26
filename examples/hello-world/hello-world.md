@@ -20,7 +20,15 @@ npm install zkc-sdk
 npm install parcel
 ```
 
-### Implementation
+## Run
+
+With the following command, you can compile and preview the project
+
+```shell
+npx parcel index.html
+```
+
+## Implementation
 
 1.  Import ZKC-SDK and `hello-world.wasm` in `index.js`
 
@@ -63,14 +71,6 @@ runWasmAdd();
     <script type="module" src="./index.js"></script>
   </body>
 </html>
-```
-
-## Run
-
-With the following command, you can compile and preview the project
-
-```shell
-parcel ./index.html
 ```
 
 ## More Info
