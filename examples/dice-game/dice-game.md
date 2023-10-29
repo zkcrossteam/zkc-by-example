@@ -9,18 +9,20 @@ This is a tutorial for a simple dice-game by using [ZKC-SDK][1].
 - [ZKC-SDK][1], which can be installed by executing:
 
 ```shell
-npm install zkc-sdk
+npm install
 ```
 
-- [Parcel][2], or other build tool for web
+### Run
+
+With the following command, you can compile and preview the project
 
 ```shell
-npm install parcel
+npm run start
 ```
 
-### Implementation
+## Implementation
 
-1.  Create application through [ZKC-DeveloperCenter][3]
+1.  Create dice application through [ZKC-DeveloperCenter][3]
 
     > This is not a required step, you can use the application image id below to complete the proof.
 
@@ -131,16 +133,7 @@ await zkcProve.settlement(provider, taskInfo);
 </html>
 ```
 
-## Run
-
-With the following command, you can compile and preview the project
-
-```shell
-pnpm run start
-```
-
 ## More Info
-
 - [Compiling `dice-game.c` into a WebAssembly module][4]
 - [Create application][3]
 
