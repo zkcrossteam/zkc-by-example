@@ -1,20 +1,26 @@
 # zkc-by-example
 
-> zkc-by-example contains some examples demonstrating how to create a ZKCross wasm application, generate and verify the zkProof on-chain by using [zkc-sdk][1].
+This repo contains examples demonstrating how to create wasm applications using [zkc-sdk][1].
 
 ## Example list
 
 1.  **Hello World**
 
-    To get started, we'll compile TypeScript/C/Rust into WebAssembly and initialize it with the zkc-sdk. Then, we can call the methods exported from WebAssembly..
+    This example demonstrates how to compile code written in TypeScript/C/Rust into WebAssembly, and then how to load the Wasm image and call exported functions in a Web Application by utilizing [zkc-sdk][1].
+    
+    Check the [hello-world.md][17] for more details.
 
-2.  **ZK Hello World**
+3.  **ZK Hello World**
 
-    Basics of zkWasm-C. In this example, we'll add zkWasm-C as a submodule, compile it, and call its methods. Afterwards, we'll prove our inputs and deploy the proof to the chain with zkc-sdk
+    This example guides you through initializing an instance of the WebAssembly module, calling its functions, and ensuring the correct execution of the function by generating a zero knowledge proof and verifying the zkProof on-chain using the [zkc-sdk][1].
+    
+    Check the [zk-hello-world.md][18] for more details.
 
-3.  **Dice Game**
+5.  **Dice Game**
 
     For a more advanced challenge, we'll create a complete ZKCross web application, which involves compiling and running the wasm file, creating and deploying the wasm application, and submitting the proof for deployment on the chain.
+    
+    Check the [dice-game.md][19] for more details.
 
 ## Technology Stack
 
@@ -28,53 +34,8 @@
 
 - **WASM**
 
-  - Language: [C][8] [Rust]
+  - Language: [C][8] [Rust][16]
   - Compilation tool: [Clang][9]
-
-## How To Run This Repository
-
-```shell
-git clone https://github.com/zkcrossteam/zkc-by-example.git
-```
-
-## How to compile
-
-### Frontend
-
-If you want to launch and preview any of the examples, you can execute the following command.
-
-> [Node.js][10] and [pnpm][11] are required.
-
-```shell
-pnpm i
-
-# For Hello World example
-pnpm hello-world
-
-# For ZK Hello World example
-pnpm zk-hello-world
-
-# For Dice Game example
-pnpm dice-game
-```
-
-### WASM
-
-#### zkWasm-C
-
-First, you need to add the C SDK repository to the project, either directly in the project root folder by cloning it, or you can add the SDK repository as a Git submodule to the project.
-
-If you want to clone the repository, execute the following command:
-
-```shell
-git clone git@github.com:zkcrossteam/zkWasm-C.git
-```
-
-If you want to add submodules, execute the following command:
-
-```shell
-git submodule add git@github.com:zkcrossteam/zkWasm-C.git
-```
 
 ## More information
 
@@ -97,3 +58,7 @@ git submodule add git@github.com:zkcrossteam/zkWasm-C.git
 [13]: https://delphinuslab.com/2023/01/29/delphinus-tutorial-1-create-your-first-zkwasm-application/
 [14]: https://www.youtube.com/watch?v=dLZbfTWLGNI
 [15]: https://delphinuslab.com/2023/04/09/talk-was-given-in-zk-summit-9th-in-breakout-session/
+[16]: https://www.rust-lang.org/
+[17]: ./examples/hello-world/hello-world.md
+[18]: ./examples/zk-hello-world/zk-hello-world.md
+[19]: ./examples/dice-game/dice-game.md
