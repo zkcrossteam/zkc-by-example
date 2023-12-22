@@ -11,7 +11,7 @@ const zkHelloWorldURL = new URL(
 );
 
 // Application image id that has been created and can be used for task proofing
-const ZK_HELLO_WORLD_MD5 = '4470FD5212FCDCAA5B50F3DC538FCDAE';
+const ZK_HELLO_WORLD_MD5 = process.env.MD5 || '4470FD5212FCDCAA5B50F3DC538FCDAE';
 
 // get DOM Node
 const luckyNumberNode = document.querySelector('#lucky-number'),

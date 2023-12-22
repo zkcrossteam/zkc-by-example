@@ -41,13 +41,11 @@ export const MyReactDice: FC<MyReactDiceProps> = ({ rollDone }) => {
   );
 };
 
-// Application image id that has been created and can be used for task proofing
-const TUTORIAL_MD5 = '665272C6FD6E4148784BF1BD2905301F';
-
 export function Home() {
   const [userAddress, setUserAddress] = useState('');
   const [diceArr, setDiceArr] = useState([0, 0, 0]);
   const [sum, setSum] = useState(0);
+  const [md5, setMd5] = useState('FEED42A03B0AABFD9C6E1A760EEDE0F7');
 
   // private inputs
   // Input must be empty or have format (0x)[0-f]*:(i64|bytes|bytes-packed) and been separated by spaces (eg: 0x12:i64).
@@ -114,8 +112,7 @@ export function Home() {
       // });
 
       const DICE_GAME_MD5 =
-        //  response?.body?.md5 ||
-        '665272C6FD6E4148784BF1BD2905301F';
+        process.env.MD5 || 'FEED42A03B0AABFD9C6E1A760EEDE0F7';
 
       // Signed information
       const taskInfo = {
@@ -171,7 +168,7 @@ export function Home() {
             The sum is <strong>{sum}</strong>.
           </li>
           <li>
-            The image md5 is <code>{TUTORIAL_MD5}</code>.
+            The image md5 is <code>{md5}</code>.
           </li>
           <li>
             The public input is: <code>{publicInputs[0]}</code>.

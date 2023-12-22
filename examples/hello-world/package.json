@@ -4,7 +4,7 @@
     "source": "index.html",
     "dependencies": {
         "parcel": "^2.10.1",
-        "zkc-sdk": "^0.1.1-alpha"
+        "zkc-sdk": "0.1.5-alpha"
     },
     "scripts": {
         "clean": "rm -rf .parcel-cache/ dist/",

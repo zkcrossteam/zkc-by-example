@@ -7,7 +7,7 @@
         "react": "^18.2.0",
         "react-dice-complete": "^2.2.0",
         "react-dom": "^18.2.0",
-        "zkc-sdk": "^0.1.1-alpha"
+        "zkc-sdk": "0.1.5-alpha"
     },
     "devDependencies": {
         "@types/node": "^20.8.9",
