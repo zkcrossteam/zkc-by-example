@@ -1,10 +1,9 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
+  ethers:
+    specifier: ~5.7
+    version: 5.7.2
   parcel:
     specifier: ^2.10.1
     version: 2.10.1(typescript@5.2.2)
@@ -18,8 +17,8 @@ dependencies:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
   zkc-sdk:
-    specifier: 0.1.1-alpha
-    version: 0.1.1-alpha(jsdom@21.1.2)(typescript@5.2.2)
+    specifier: 0.1.5-alpha
+    version: 0.1.5-alpha(jsdom@21.1.2)(typescript@5.2.2)
 
 devDependencies:
   '@types/node':
@@ -2454,7 +2453,7 @@ packages:
       '@parcel/source-map': 2.1.1
       '@parcel/utils': 2.10.1
       '@parcel/workers': 2.10.1(@parcel/core@2.10.1)
-      '@swc/helpers': 0.5.1
+      '@swc/helpers': 0.5.3
       browserslist: 4.22.1
       nullthrows: 1.1.1
       regenerator-runtime: 0.13.11
@@ -2831,14 +2830,8 @@ packages:
     resolution: {integrity: sha512-9F4ys4C74eSTEUNndnER3VJ15oru2NumfQxS8geE+f3eB5xvfxpWyqE5XlVnxb/R14uoXi6SLbBwwiDSkv+XEw==}
     dev: false
 
-  /@swc/helpers@0.4.14:
-    resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
-    dependencies:
-      tslib: 2.6.2
-    dev: false
-
-  /@swc/helpers@0.5.1:
-    resolution: {integrity: sha512-sJ902EfIzn1Fa+qYmjdQqh8tPsoxyBz+8yBKC2HKUxyezKJFwPGOn7pv4WY6QuQW//ySQi5lJjA/ZT9sNWWNTg==}
+  /@swc/helpers@0.5.3:
+    resolution: {integrity: sha512-FaruWX6KdudYloq1AHD/4nU+UsMTdNE8CKyrseXWEcgjDAbvkwJg2QGPAnfIJLIWsjZOSPLOAykK6fuYp4vp4A==}
     dependencies:
       tslib: 2.6.2
     dev: false
@@ -2948,6 +2941,7 @@ packages:
 
   /abab@2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
+    deprecated: Use your platform's native atob() and btoa() methods instead
     dev: false
 
   /abortcontroller-polyfill@1.7.5:
@@ -3399,6 +3393,7 @@ packages:
   /domexception@4.0.0:
     resolution: {integrity: sha512-A2is4PLG+eeSfoTMA95/s4pvAoSo2mKtiM5jlHkAVewmiO8ISFTFKZjH7UAM1Atli/OT/7JHOrJRJiMKUZKYBw==}
     engines: {node: '>=12'}
+    deprecated: Use your platform's native DOMException instead
     dependencies:
       webidl-conversions: 7.0.0
     dev: false
@@ -4121,10 +4116,10 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
-  /iterable-observer@1.0.0:
-    resolution: {integrity: sha512-DV9Cuh50EKRQ87V1L92E8R/rrEeowO78a86VDzvG350khRhjNAvkQMLxZ/02MOvoJeMl7NqU0Y4Y9z6xLOjS7g==}
+  /iterable-observer@1.0.1:
+    resolution: {integrity: sha512-qy2Kuf1drKVmWgWaRsqdM8EHanAW4xS37j1nFdVP07qiN0Mj4D5sl9dYA8mZJdX/d3De4bhZoFuVWXvcOM1usg==}
     dependencies:
-      '@swc/helpers': 0.4.14
+      '@swc/helpers': 0.5.3
     dev: false
 
   /js-sha3@0.8.0:
@@ -4233,13 +4228,13 @@ packages:
       graceful-fs: 4.2.11
     dev: true
 
-  /koajax@0.9.4(jsdom@21.1.2)(typescript@5.2.2):
-    resolution: {integrity: sha512-uwS2ggrzcZ3KkO0MST8rVdFwT2McwnmxPc9DiiWibjnb4Zcl25YeupGkcNd226hhHp9FJYm5QjHAruL8NZ97qg==}
+  /koajax@0.9.6(jsdom@21.1.2)(typescript@5.2.2):
+    resolution: {integrity: sha512-Cv5HH7igfN7HEGLwRzu4TEzXLTm3QSpbR48Gif9dhPPBNKZ8ELS1bbh3Dik1s83vpKnnjC+DcFU8ql+LwNg3tQ==}
     peerDependencies:
       jsdom: '>=21'
     dependencies:
-      '@swc/helpers': 0.5.1
-      iterable-observer: 1.0.0
+      '@swc/helpers': 0.5.3
+      iterable-observer: 1.0.1
       jsdom: 21.1.2
       regenerator-runtime: 0.14.0
       web-utility: 4.1.3(typescript@5.2.2)
@@ -5390,7 +5385,7 @@ packages:
     peerDependencies:
       typescript: '>=4.1'
     dependencies:
-      '@swc/helpers': 0.5.1
+      '@swc/helpers': 0.5.3
       element-internals-polyfill: 1.3.9
       regenerator-runtime: 0.14.0
       typescript: 5.2.2
@@ -5516,12 +5511,13 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zkc-sdk@0.1.1-alpha(jsdom@21.1.2)(typescript@5.2.2):
-    resolution: {integrity: sha512-/hG4cxD+LdlEImOhKMJ4iDR2P6YH+vypulFNfSdc37N+ZGg/2I+oUr63/6RWz1prwT4zgiAnWAZFTxPL/vNytw==}
+  /zkc-sdk@0.1.5-alpha(jsdom@21.1.2)(typescript@5.2.2):
+    resolution: {integrity: sha512-TAjtu8Kan53mNKnqAVD99jv/nqLWtR6rYMGSeOraj66Yi6O1OAHu+IRkS3HybZRTJU2DtqQJ5oUSdgV3hCeipQ==}
     dependencies:
       '@metamask/providers': 11.1.0
+      '@swc/helpers': 0.5.3
       ethers: 5.7.2
-      koajax: 0.9.4(jsdom@21.1.2)(typescript@5.2.2)
+      koajax: 0.9.6(jsdom@21.1.2)(typescript@5.2.2)
       web-utility: 4.1.3(typescript@5.2.2)
     transitivePeerDependencies:
       - bufferutil
@@ -5551,3 +5547,7 @@ packages:
       which: 3.0.1
       yaml: 2.3.1
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false

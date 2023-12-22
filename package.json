@@ -11,7 +11,7 @@
     "react": "^18.2.0",
     "react-dice-complete": "^2.2.0",
     "react-dom": "^18.2.0",
-    "zkc-sdk": "^0.1.1-alpha"
+    "zkc-sdk": "0.1.5-alpha"
   },
   "devDependencies": {
     "@types/node": "^20.8.9",
@@ -38,11 +38,12 @@
   "scripts": {
     "prepack": "husky install",
     "test": "lint-staged",
-    "pack": "parcel build --no-source-maps ./src/examples/dice-game/index.html --public-url .",
+    "pack": "parcel build --no-source-maps ./examples/dice-game/index.html --public-url .",
     "build": "npm run clean  && npm run pack",
     "clean": "rm -rf .parcel-cache/ dist/",
-    "dice-game": "cd ./examples/dice-game && npm run clean && parcel ./index.html",
-    "hello-world": "cd ./examples/hello-world && npm run clean && parcel ./index.html",
-    "zk-hello-world": "cd ./examples/zk-hello-world && npm run clean && parcel ./index.html"
+    "start": "cd ./examples/dice-game && npm run clean && parcel ./index.html -p 3000",
+    "dice-game": "cd ./examples/dice-game && npm run clean && parcel ./index.html -p 3000",
+    "hello-world": "cd ./examples/hello-world && npm run clean && parcel ./index.html -p 3000",
+    "zk-hello-world": "cd ./examples/zk-hello-world && npm run clean && parcel ./index.html -p 3000"
   }
 }
